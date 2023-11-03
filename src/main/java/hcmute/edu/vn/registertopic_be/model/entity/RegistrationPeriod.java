@@ -11,23 +11,24 @@ import java.util.Date;
 @Getter
 @ToString
 @Entity
-@Table(name = "notification")
+@Table(name = "register_period")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Notification {
+public class RegistrationPeriod {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="notification_id")
-    private int notificationId;
+    @Column(name="period_id")
+    private int periodId;
 
-    @Column(name="content")
-    private String content;
-
-    @Column(name="title")
-    private String title;
-
-    @Column(name = "date_Submit")
+    @Column(name="registration_time")
     @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date dateSubmit;
+    private Date registrationTime;
+
+    @Column(name="registration_name")
+    private String registrationName;
+
+    @ManyToOne
+    @JoinColumn(name="type_subject_id")
+    private TypeSubject typeSubjectId;
 }

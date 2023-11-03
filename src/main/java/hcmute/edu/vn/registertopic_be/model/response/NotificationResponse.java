@@ -1,32 +1,21 @@
-package hcmute.edu.vn.registertopic_be.model.entity;
+package hcmute.edu.vn.registertopic_be.model.response;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Setter
 @Getter
-@ToString
-@Entity
-@Table(name = "notification")
-@NoArgsConstructor
 @AllArgsConstructor
-public class Notification {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="notification_id")
+@NoArgsConstructor
+public class NotificationResponse implements Serializable {
     private int notificationId;
-
-    @Column(name="content")
     private String content;
-
-    @Column(name="title")
     private String title;
 
-    @Column(name = "date_Submit")
     @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date dateSubmit;
