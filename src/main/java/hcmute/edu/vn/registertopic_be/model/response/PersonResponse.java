@@ -27,6 +27,5 @@ public class PersonResponse implements Serializable {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date birthDay;
 
-    private String password;
     private boolean status;
 }

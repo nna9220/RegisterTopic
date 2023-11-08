@@ -18,7 +18,6 @@ public interface PersonMapper {
     @Mapping(source = "person.gender", target = "gender")
     @Mapping(source = "person.role", target = "role")
     @Mapping(source = "person.birthDay", target = "birthDay")
-    @Mapping(source = "person.password", target = "password")
     @Mapping(source = "person.status", target = "status")
     PersonResponse toResponse(Person person);
 

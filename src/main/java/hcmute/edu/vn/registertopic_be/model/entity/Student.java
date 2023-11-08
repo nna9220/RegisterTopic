@@ -5,6 +5,7 @@ import lombok.*;
 import net.minidev.json.annotate.JsonIgnore;
 import org.w3c.dom.stylesheets.LinkStyle;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Setter
@@ -14,7 +15,7 @@ import java.util.List;
 @Table(name = "student")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Student {
+public class Student implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "student_id")

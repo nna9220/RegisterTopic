@@ -5,6 +5,7 @@ import jakarta.validation.constraints.Size;
 import lombok.*;
 import net.minidev.json.annotate.JsonIgnore;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Setter
@@ -14,7 +15,7 @@ import java.util.List;
 @Table(name = "type_subject")
 @NoArgsConstructor
 @AllArgsConstructor
-public class TypeSubject {
+public class TypeSubject implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="type_id")

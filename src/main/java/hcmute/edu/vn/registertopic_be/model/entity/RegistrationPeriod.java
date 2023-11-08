@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Setter
@@ -14,7 +15,7 @@ import java.util.Date;
 @Table(name = "register_period")
 @NoArgsConstructor
 @AllArgsConstructor
-public class RegistrationPeriod {
+public class RegistrationPeriod implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="period_id")

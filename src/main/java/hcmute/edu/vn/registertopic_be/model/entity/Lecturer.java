@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import net.minidev.json.annotate.JsonIgnore;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Setter
@@ -13,7 +14,7 @@ import java.util.List;
 @Table(name = "lecturer")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Lecturer {
+public class Lecturer implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "lecturer_id")
