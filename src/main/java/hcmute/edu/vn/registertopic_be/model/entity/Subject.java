@@ -55,12 +55,12 @@ public class Subject implements Serializable {
     @Column(name="status")
     private byte status = 0;
 
-    @OneToMany(mappedBy = "subjectId",orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "subjectId",orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
     @Size(max = 2)
     private List<Student> students;
 
-    @OneToMany(mappedBy = "subjectId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "subjectId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
     private List<Task> tasks;
 

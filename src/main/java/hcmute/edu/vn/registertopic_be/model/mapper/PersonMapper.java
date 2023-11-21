@@ -19,6 +19,7 @@ public interface PersonMapper {
     @Mapping(source = "person.role", target = "role")
     @Mapping(source = "person.birthDay", target = "birthDay")
     @Mapping(source = "person.status", target = "status")
+    @Mapping(source = "person.comments", target = "comments")
     PersonResponse toResponse(Person person);
 
     List<PersonResponse> toPersonListDTO(List<Person> persons);

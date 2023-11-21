@@ -28,7 +28,7 @@ public class Comment implements Serializable {
     private Task taskId;
 
     @ManyToOne
-    @JoinColumn(name="poster")
+    @JoinColumn(name="poster", referencedColumnName = "person_id", columnDefinition = "VARCHAR(255)")
     private Person poster;
 
     @Column(name="date_submit")
@@ -39,7 +39,7 @@ public class Comment implements Serializable {
     @Column(name="content")
     private String content;
 
-    @OneToMany(mappedBy = "commentId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "commentId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
     private List<File> files;
 

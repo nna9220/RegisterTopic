@@ -23,7 +23,7 @@ public class SchoolYear implements Serializable {
     @Column(name="year", length = 50)
     private String year;
 
-    @OneToMany(mappedBy = "schoolYear", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "schoolYear", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
     private List<Student> students;
 }

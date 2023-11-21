@@ -12,18 +12,19 @@ import java.util.List;
 @ToString
 @Entity
 @Table(name = "lecturer")
+@PrimaryKeyJoinColumn(name = "lecturer_id", referencedColumnName = "person_id")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Lecturer implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "lecturer_id")
-    private int lecturerId;
 
-    //Khóa ngoại tham chiếu đến person
+    @Id
+    @Column(name = "lecturer_id", columnDefinition = "VARCHAR(255)")
+    private String lecturerId;
+
+/*    //Khóa ngoại tham chiếu đến person
     @OneToOne
     @JoinColumn(name = "person_id")
-    private Person person;
+    private Person person;*/
 
     @Column(name="role")
     private Role role;
@@ -31,15 +32,15 @@ public class Lecturer implements Serializable {
     @Column(name="major")
     private Major major;
 
-    @OneToMany(mappedBy = "instructorId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "instructorId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
     private List<Subject> listSubInstruct;
 
-    @OneToMany(mappedBy = "thesisAdvisorId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "thesisAdvisorId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
     private List<Subject> listSubCounterArgument;
 
-    @OneToMany(mappedBy = "instructorId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "instructorId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
     private List<Task> tasks;
 }

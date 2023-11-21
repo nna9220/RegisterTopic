@@ -37,7 +37,9 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(ahr -> ahr
-                        .requestMatchers(new AntPathRequestMatcher("/","/login")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher("/","/login"),
+                                new AntPathRequestMatcher("/swagger-ui.html")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher("/admin/**")).hasAnyAuthority("ROLE_Admin")
                         .anyRequest().authenticated())
                 .formLogin(AbstractHttpConfigurer::disable)
                 .oauth2Login(oauth2 -> oauth2
@@ -48,6 +50,7 @@ public class SecurityConfig {
                             public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
                                 DefaultOidcUser oauthUser = (DefaultOidcUser) authentication.getPrincipal();
                                 String email = oauthUser.getAttribute("email");
+                                System.out.println("Hello");
 
                                 try {
                                     personService.processOAuthPostLogin(email);

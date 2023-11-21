@@ -21,10 +21,15 @@ public class RegistrationPeriod implements Serializable {
     @Column(name="period_id")
     private int periodId;
 
-    @Column(name="registration_time")
+    @Column(name="registration_time_start")
     @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date registrationTime;
+    private Date registrationTimeStart;
+
+    @Column(name="registration_time_end")
+    @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date registrationTimeEnd;
 
     @Column(name="registration_name")
     private String registrationName;

@@ -16,6 +16,9 @@ public class PersonService {
     public List<Person> findAll(){
         return personRepository.findAllPerson();
     }
+    public Person createPerson(Person person){
+        return personRepository.save(person);
+    }
     public Person getUserByEmail(String email){
         return personRepository.findByEmail(email).orElse(null);
     }

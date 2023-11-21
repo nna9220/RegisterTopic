@@ -41,18 +41,18 @@ public class Task implements Serializable {
     private Subject subjectId;
 
     @ManyToOne
-    @JoinColumn(name="instructor_id")
+    @JoinColumn(name="instructor_id", columnDefinition = "VARCHAR(255)")
     private Lecturer instructorId;
 
     @ManyToOne
-    @JoinColumn(name="assign_to")
+    @JoinColumn(name="assign_to", columnDefinition = "VARCHAR(255)")
     private Student assignTo;
 
-    @OneToMany(mappedBy = "taskId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "taskId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
     private List<Comment> comments;
 
-    @OneToMany(mappedBy = "taskId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "taskId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
     private List<File> files;
 }

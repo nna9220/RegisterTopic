@@ -13,18 +13,18 @@ import java.util.List;
 @ToString
 @Entity
 @Table(name = "student")
+@PrimaryKeyJoinColumn(name = "student_id", referencedColumnName = "person_id")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Student implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "student_id")
-    private int studentId;
+    @Column(name = "student_id", columnDefinition = "VARCHAR(255)")
+    private String studentId;
 
-    //Khóa ngoại tham chiếu đến person
+/*    //Khóa ngoại tham chiếu đến person
     @OneToOne
     @JoinColumn(name = "person_id")
-    private Person person;
+    private Person person;*/
 
     @Column(name = "major", length = 50)
     @Enumerated(EnumType.STRING)
@@ -42,7 +42,7 @@ public class Student implements Serializable {
     @JoinColumn(name="subject_id")
     private Subject subjectId;
 
-    @OneToMany(mappedBy = "assignTo", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "assignTo", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
     private List<Task> tasks;
 }

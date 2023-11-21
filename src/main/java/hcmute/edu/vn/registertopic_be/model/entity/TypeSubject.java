@@ -24,11 +24,11 @@ public class TypeSubject implements Serializable {
     @Column(name="type_name")
     private String typeName;
 
-    @OneToMany(mappedBy = "typeSubject", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "typeSubject", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
     private List<Subject> subjectsList;
 
-    @OneToMany(mappedBy = "typeSubjectId",orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "typeSubjectId",orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
     @Size(max = 2)
     private List<RegistrationPeriod> registrationPeriods;

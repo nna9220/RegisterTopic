@@ -23,7 +23,7 @@ public class StudentClass implements Serializable {
     @Column(name="classname", length = 50)
     private String classname;
 
-    @OneToMany(mappedBy = "studentClass", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "studentClass", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
     private List<Student> students;
 }

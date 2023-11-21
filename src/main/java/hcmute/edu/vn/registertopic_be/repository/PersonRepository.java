@@ -1,6 +1,7 @@
 package hcmute.edu.vn.registertopic_be.repository;
 
 import hcmute.edu.vn.registertopic_be.model.entity.Person;
+import hcmute.edu.vn.registertopic_be.model.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
