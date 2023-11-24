@@ -1,8 +1,9 @@
 package hcmute.edu.vn.registertopic_be.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
-import net.minidev.json.annotate.JsonIgnore;
 import org.w3c.dom.stylesheets.LinkStyle;
 
 import java.io.Serializable;
@@ -10,10 +11,8 @@ import java.util.List;
 
 @Setter
 @Getter
-@ToString
 @Entity
 @Table(name = "student")
-@PrimaryKeyJoinColumn(name = "student_id", referencedColumnName = "person_id")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Student implements Serializable {
@@ -21,10 +20,9 @@ public class Student implements Serializable {
     @Column(name = "student_id", columnDefinition = "VARCHAR(255)")
     private String studentId;
 
-/*    //Khóa ngoại tham chiếu đến person
     @OneToOne
-    @JoinColumn(name = "person_id")
-    private Person person;*/
+    @JoinColumn(name = "student_id")
+    private Person person;
 
     @Column(name = "major", length = 50)
     @Enumerated(EnumType.STRING)

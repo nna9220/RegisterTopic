@@ -12,7 +12,6 @@ import java.util.List;
 @ToString
 @Entity
 @Table(name = "lecturer")
-@PrimaryKeyJoinColumn(name = "lecturer_id", referencedColumnName = "person_id")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Lecturer implements Serializable {
@@ -21,10 +20,9 @@ public class Lecturer implements Serializable {
     @Column(name = "lecturer_id", columnDefinition = "VARCHAR(255)")
     private String lecturerId;
 
-/*    //Khóa ngoại tham chiếu đến person
     @OneToOne
-    @JoinColumn(name = "person_id")
-    private Person person;*/
+    @JoinColumn(name = "lecturer_id")
+    private Person person;
 
     @Column(name="role")
     private Role role;

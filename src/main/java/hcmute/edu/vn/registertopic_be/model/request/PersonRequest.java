@@ -17,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PersonRequest implements Serializable {
-    private int personId;
+    private String personId;
     private String lastName;
     private String firstName;
     private String email;

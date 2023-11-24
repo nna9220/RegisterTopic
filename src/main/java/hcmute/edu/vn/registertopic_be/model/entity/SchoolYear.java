@@ -1,15 +1,15 @@
 package hcmute.edu.vn.registertopic_be.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
-import net.minidev.json.annotate.JsonIgnore;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Setter
 @Getter
-@ToString
 @Entity
 @Table(name = "school_year")
 @NoArgsConstructor
@@ -25,5 +25,5 @@ public class SchoolYear implements Serializable {
 
     @OneToMany(mappedBy = "schoolYear", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
-    private List<Student> students;
+    private List<Student> students = new ArrayList<>();
 }

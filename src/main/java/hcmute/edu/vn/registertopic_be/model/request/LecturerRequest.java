@@ -12,7 +12,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LecturerRequest implements Serializable {
-    private int lecturerId;
+    private String lecturerId;
     private String role;
     private String major;
 }

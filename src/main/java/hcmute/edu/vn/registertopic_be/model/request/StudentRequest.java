@@ -14,11 +14,12 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class StudentRequest implements Serializable {
-    private int studentId;
+    private String studentId;
     private String major;
     private StudentClass studentClass;
     private SchoolYear schoolYear;
     private Subject subjectId;
+    private Person personId;
     private List<Task> tasks;
 }
 
