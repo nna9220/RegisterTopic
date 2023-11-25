@@ -30,4 +30,13 @@ public class StudentService {
         return studentRepository.save(student);
     }
 
+    public Student detail(String id){
+        Student existedStudent = studentRepository.findById(id).orElse(null);
+        if (existedStudent!=null){
+            return existedStudent;
+        }else {
+            throw new NotFoundException(CLASS_NOT_FOUND);
+        }
+    }
+
 }

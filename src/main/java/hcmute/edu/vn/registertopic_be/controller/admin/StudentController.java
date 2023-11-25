@@ -126,4 +126,9 @@ public class StudentController {
     public ResponseEntity<?> deleteStudent(@PathVariable String id){
         return new ResponseEntity<>(personService.deletePerson(id), HttpStatus.OK);
     }
+
+    @GetMapping("/detail/{id}")
+    public  ResponseEntity<?> getDetail(@PathVariable String id){
+        return ResponseEntity.ok(studentService.detail(id));
+    }
 }
