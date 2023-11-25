@@ -1,15 +1,14 @@
 package hcmute.edu.vn.registertopic_be.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
-import net.minidev.json.annotate.JsonIgnore;
 
 import java.io.Serializable;
 import java.util.List;
 
 @Setter
 @Getter
-@ToString
 @Entity
 @Table(name = "lecturer")
 @NoArgsConstructor
@@ -20,8 +19,8 @@ public class Lecturer implements Serializable {
     @Column(name = "lecturer_id", columnDefinition = "VARCHAR(255)")
     private String lecturerId;
 
-    @OneToOne
-    @JoinColumn(name = "lecturer_id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "lecturer_id", referencedColumnName = "person_id")
     private Person person;
 
     @Column(name="role")

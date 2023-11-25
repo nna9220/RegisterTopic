@@ -77,4 +77,13 @@ public class PersonService {
         }
     }
 
+    public Person detailPerson(String id){
+        Person existedPerson = personRepository.findById(id).orElse(null);
+        if (existedPerson!=null){
+            return existedPerson;
+        }else {
+            throw new NotFoundException(CLASS_NOT_FOUND);
+        }
+    }
+
 }
