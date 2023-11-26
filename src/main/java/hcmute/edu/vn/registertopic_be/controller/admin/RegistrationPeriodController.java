@@ -6,7 +6,7 @@ import hcmute.edu.vn.registertopic_be.model.mapper.RegistrationPeriodMapper;
 import hcmute.edu.vn.registertopic_be.model.request.RegistrationPeriodRequest;
 import hcmute.edu.vn.registertopic_be.repository.PersonRepository;
 import hcmute.edu.vn.registertopic_be.repository.RegistrationPeriodRepository;
-import hcmute.edu.vn.registertopic_be.service.RegistrationPeriodService;
+import hcmute.edu.vn.registertopic_be.service.Admin.RegistrationPeriodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

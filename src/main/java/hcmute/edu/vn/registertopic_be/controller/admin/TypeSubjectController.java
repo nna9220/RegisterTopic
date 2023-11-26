@@ -5,7 +5,7 @@ import hcmute.edu.vn.registertopic_be.model.entity.TypeSubject;
 import hcmute.edu.vn.registertopic_be.model.mapper.TypeSubjectMapper;
 import hcmute.edu.vn.registertopic_be.model.request.TypeSubjectRequest;
 import hcmute.edu.vn.registertopic_be.repository.PersonRepository;
-import hcmute.edu.vn.registertopic_be.service.TypeSubjectService;
+import hcmute.edu.vn.registertopic_be.service.Admin.TypeSubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

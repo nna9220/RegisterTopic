@@ -1,7 +1,7 @@
 package hcmute.edu.vn.registertopic_be.config;
 
 import hcmute.edu.vn.registertopic_be.service.CustomOAuth2UserService;
-import hcmute.edu.vn.registertopic_be.service.PersonService;
+import hcmute.edu.vn.registertopic_be.service.Admin.PersonService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

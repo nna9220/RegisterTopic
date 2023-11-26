@@ -1,4 +1,4 @@
-package hcmute.edu.vn.registertopic_be.service;
+package hcmute.edu.vn.registertopic_be.service.Admin;
 
 import hcmute.edu.vn.registertopic_be.model.entity.StudentClass;
 import hcmute.edu.vn.registertopic_be.model.mapper.StudentClassMapper;

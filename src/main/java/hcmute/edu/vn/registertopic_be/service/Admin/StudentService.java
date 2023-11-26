@@ -1,6 +1,5 @@
-package hcmute.edu.vn.registertopic_be.service;
+package hcmute.edu.vn.registertopic_be.service.Admin;
 
-import hcmute.edu.vn.registertopic_be.controller.admin.StudentController;
 import hcmute.edu.vn.registertopic_be.exception.NotFoundException;
 import hcmute.edu.vn.registertopic_be.model.entity.Student;
 import hcmute.edu.vn.registertopic_be.model.mapper.StudentMapper;
@@ -12,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.logging.Level;
 
 @Service
 public class StudentService {
