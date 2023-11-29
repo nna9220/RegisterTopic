@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -16,7 +17,7 @@ import java.util.List;
 @Table(name = "comment")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Comment {
+public class Comment implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="comment_id")
@@ -27,7 +28,7 @@ public class Comment {
     private Task taskId;
 
     @ManyToOne
-    @JoinColumn(name="poster")
+    @JoinColumn(name="poster", referencedColumnName = "person_id", columnDefinition = "VARCHAR(255)")
     private Person poster;
 
     @Column(name="date_submit")
@@ -38,7 +39,7 @@ public class Comment {
     @Column(name="content")
     private String content;
 
-    @OneToMany(mappedBy = "commentId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "commentId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
     private List<File> files;
 

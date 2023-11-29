@@ -1,20 +1,19 @@
 package hcmute.edu.vn.registertopic_be.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Size;
 import lombok.*;
-import net.minidev.json.annotate.JsonIgnore;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Setter
 @Getter
-@ToString
 @Entity
 @Table(name = "subject")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Subject {
+public class Subject implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="subject_id")
@@ -54,13 +53,24 @@ public class Subject {
     @Column(name="status")
     private byte status = 0;
 
-    @OneToMany(mappedBy = "subjectId",orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnore
-    @Size(max = 2)
-    private List<Student> students;
+    @Column(name = "student_1")
+    private String student1;
 
-    @OneToMany(mappedBy = "subjectId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne
+    @JoinColumn(name="student_1", referencedColumnName = "student_id", insertable = false, updatable = false)
+    private Student studentId1;
+
+    @Column(name = "student_2")
+    private String student2;
+
+    @OneToOne
+    @JoinColumn(name="student_2", referencedColumnName = "student_id", insertable = false, updatable = false)
+    private Student studentId2;
+
+    @OneToMany(mappedBy = "subjectId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
     private List<Task> tasks;
 
+    @Column(name="ÿear")
+    private String year;
 }

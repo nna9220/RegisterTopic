@@ -12,6 +12,8 @@ import java.util.List;
 public interface TypeSubjectMapper {
     @Mapping(source = "typeSubject.typeId", target = "typeId")
     @Mapping(source = "typeSubject.typeName", target = "typeName")
+    @Mapping(source = "typeSubject.subjectsList", target = "subjectsList")
+    @Mapping(source = "typeSubject.registrationPeriods", target = "registrationPeriods")
     TypeSubjectResponse toResponse(TypeSubject typeSubject);
 
     List<TypeSubjectResponse> toTypeSubjectListDTO(List<TypeSubject> typeSubjects);

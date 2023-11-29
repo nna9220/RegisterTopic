@@ -1,27 +1,26 @@
 package hcmute.edu.vn.registertopic_be.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
-import net.minidev.json.annotate.JsonIgnore;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Setter
 @Getter
-@ToString
 @Entity
 @Table(name = "lecturer")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Lecturer {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "lecturer_id")
-    private int lecturerId;
+public class Lecturer implements Serializable {
 
-    //Khóa ngoại tham chiếu đến person
-    @OneToOne
-    @JoinColumn(name = "person_id")
+    @Id
+    @Column(name = "lecturer_id", columnDefinition = "VARCHAR(255)")
+    private String lecturerId;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "lecturer_id", referencedColumnName = "person_id")
     private Person person;
 
     @Column(name="role")
@@ -30,15 +29,15 @@ public class Lecturer {
     @Column(name="major")
     private Major major;
 
-    @OneToMany(mappedBy = "instructorId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "instructorId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
     private List<Subject> listSubInstruct;
 
-    @OneToMany(mappedBy = "thesisAdvisorId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "thesisAdvisorId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
     private List<Subject> listSubCounterArgument;
 
-    @OneToMany(mappedBy = "instructorId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "instructorId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
     private List<Task> tasks;
 }

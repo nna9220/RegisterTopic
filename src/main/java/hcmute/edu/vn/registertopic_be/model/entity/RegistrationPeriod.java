@@ -5,25 +5,30 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Setter
 @Getter
-@ToString
 @Entity
 @Table(name = "register_period")
 @NoArgsConstructor
 @AllArgsConstructor
-public class RegistrationPeriod {
+public class RegistrationPeriod implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="period_id")
     private int periodId;
 
-    @Column(name="registration_time")
+    @Column(name="registration_time_start")
     @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date registrationTime;
+    private Date registrationTimeStart;
+
+    @Column(name="registration_time_end")
+    @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date registrationTimeEnd;
 
     @Column(name="registration_name")
     private String registrationName;

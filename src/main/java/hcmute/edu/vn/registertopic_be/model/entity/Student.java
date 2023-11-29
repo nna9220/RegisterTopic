@@ -1,28 +1,27 @@
 package hcmute.edu.vn.registertopic_be.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
-import net.minidev.json.annotate.JsonIgnore;
 import org.w3c.dom.stylesheets.LinkStyle;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Setter
 @Getter
-@ToString
 @Entity
 @Table(name = "student")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Student {
+public class Student implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "student_id")
-    private int studentId;
+    @Column(name = "student_id", columnDefinition = "VARCHAR(255)")
+    private String studentId;
 
-    //Khóa ngoại tham chiếu đến person
     @OneToOne
-    @JoinColumn(name = "person_id")
+    @JoinColumn(name = "student_id")
     private Person person;
 
     @Column(name = "major", length = 50)
@@ -41,7 +40,7 @@ public class Student {
     @JoinColumn(name="subject_id")
     private Subject subjectId;
 
-    @OneToMany(mappedBy = "assignTo", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "assignTo", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
     private List<Task> tasks;
 }

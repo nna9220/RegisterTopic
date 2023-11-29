@@ -6,21 +6,27 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Pattern;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 @Setter
 @Getter
 @ToString
 @Entity
 @Table(name = "person")
-@NoArgsConstructor
 @AllArgsConstructor
-public class Person {
+public class Person implements OAuth2User, Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "person_id")
-    private int personId;
+    @Column(name = "person_id", columnDefinition = "VARCHAR(255)")
+    private String personId;
 
     @Column(name = "lastname")
     private String lastName;
@@ -46,15 +52,33 @@ public class Person {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private String birthDay;
 
-    @Column(name = "password")
-    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$", message = "Mật khẩu không đáp ứng yêu cầu bảo mật")
-    private String password;
-
     @Column(name = "status")
     private boolean status;
 
-    @OneToMany(mappedBy = "poster", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "poster", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
     private List<Comment> comments;
 
+    public Person() {
+
+    }
+
+
+    @Override
+    public Map<String, Object> getAttributes() {
+        return null;
+    }
+
+
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return role.getAuthorities();
+    }
+
+    @Override
+    public String getName() {
+        return null;
+    }
 }
+

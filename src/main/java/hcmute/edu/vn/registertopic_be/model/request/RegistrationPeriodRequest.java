@@ -1,6 +1,7 @@
 package hcmute.edu.vn.registertopic_be.model.request;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import hcmute.edu.vn.registertopic_be.model.entity.TypeSubject;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,9 +18,9 @@ import java.util.Date;
 public class RegistrationPeriodRequest implements Serializable {
     private int periodId;
 
-    @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date registrationTime;
+    private Date registrationTimeStart;
+    private Date registrationTimeEnd;
 
     private String registrationName;
+    private TypeSubject typeSubjectId;
 }

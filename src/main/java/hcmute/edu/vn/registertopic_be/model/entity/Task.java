@@ -6,17 +6,17 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 @Setter
 @Getter
-@ToString
 @Entity
 @Table(name = "task")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Task {
+public class Task implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="task_id")
@@ -40,18 +40,18 @@ public class Task {
     private Subject subjectId;
 
     @ManyToOne
-    @JoinColumn(name="instructor_id")
+    @JoinColumn(name="instructor_id", columnDefinition = "VARCHAR(255)")
     private Lecturer instructorId;
 
     @ManyToOne
-    @JoinColumn(name="assign_to")
+    @JoinColumn(name="assign_to", columnDefinition = "VARCHAR(255)")
     private Student assignTo;
 
-    @OneToMany(mappedBy = "taskId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "taskId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
     private List<Comment> comments;
 
-    @OneToMany(mappedBy = "taskId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "taskId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
     private List<File> files;
 }

@@ -3,6 +3,8 @@ package hcmute.edu.vn.registertopic_be.model.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.io.Serializable;
+
 @Setter
 @Getter
 @ToString
@@ -10,7 +12,7 @@ import lombok.*;
 @Table(name = "file")
 @NoArgsConstructor
 @AllArgsConstructor
-public class File {
+public class File implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="file_id")

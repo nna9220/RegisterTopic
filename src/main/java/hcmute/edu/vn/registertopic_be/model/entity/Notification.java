@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Setter
@@ -14,7 +15,7 @@ import java.util.Date;
 @Table(name = "notification")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Notification {
+public class Notification implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="notification_id")
